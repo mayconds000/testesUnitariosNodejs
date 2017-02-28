@@ -6,7 +6,7 @@ import Todo from './../models/task';
 const expect = chai.expect;
 require('sinon-mongoose'); 
 
-describe('', () => {
+describe('Tasks', () => {
   it('should create a new task', (done) => {
     let mock = sinon.mock(
       new Todo({
@@ -72,6 +72,23 @@ describe('', () => {
 
       expect(result.status).to.be.true;
       expect(result.data).to.be.an('array');
+      done();
+    });
+  });
+
+  it('should return error find', (done) => {
+    let mock = sinon.mock(Todo);
+
+    mock.expects('find').yields({
+      status: false
+    }, null);
+
+    Todo.find((err, result) => {
+      mock.verify();
+      mock.restore();
+
+      expect(err.status).to.be.false;
+      expect(err.status).to.not.be.true;
       done();
     });
   });
