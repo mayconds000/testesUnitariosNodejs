@@ -1,0 +1,15 @@
+{
+  "name": "unit_test_son",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "export NODE_ENV=test && mocha test '/**/*.spec.js'"
+  },
+  "author": "mayconds000",
+  "license": "ISC",
+  "dependencies": {
+    "chai": "^3.5.0",
+    "mocha": "^3.2.0"
+  }
+}
