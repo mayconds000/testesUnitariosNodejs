@@ -16,12 +16,9 @@ app.use(bodyParser.json());
 
 mongoose.connect('mongodb://localhost/test_mongo');
 
-// app.get('/', (req, res) => {
-//   res.send('my route!');
-// });
-
 app.post('/tasks', task.create);
 app.delete('/tasks/:id', task.remove);
+app.get('/tasks', task.find);
 
 app.listen(3000, () => {
   console.log('express started');

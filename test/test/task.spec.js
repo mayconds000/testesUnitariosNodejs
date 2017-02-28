@@ -56,5 +56,23 @@ describe('', () => {
 
       done();
     });
-  })
+  });
+
+  it('should return all  tasks', (done) => {
+    let mock = sinon.mock(Todo);
+
+    mock.expects('find').yields(null, {
+      status: true,
+      data: []
+    });
+
+    Todo.find((err, result) => {
+      mock.verify();
+      mock.restore();
+
+      expect(result.status).to.be.true;
+      expect(result.data).to.be.an('array');
+      done();
+    });
+  });
 });
